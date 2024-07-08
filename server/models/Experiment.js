@@ -6,7 +6,7 @@ const ExperimentSchema = new Schema({
         type: String,
         required: true
     },
-    experimentID:{
+    expID:{
         type: String,
         required: true
     },

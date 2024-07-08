@@ -48,11 +48,8 @@ exports.postExperiment = async(req, res) => {
         details: req.body.details
 
     });
-
     try{
-
-        await Experiment.create(newCustomer);
-
+        await Experiment.create(newExperiment);
         res.redirect('/');
     }catch (error){
         console.log(error);

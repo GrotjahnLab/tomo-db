@@ -13,7 +13,26 @@ exports.homepage = async (req, res) => {
        title: 'TomoDB',
        description: 'A dashboard with tomographic expermient data'
     }
-    res.render('index', locals); 
+
+    let perPage = 12;
+    let page = req.query.pge || 1 ;
+
+
+    try{
+        const exp = await Experiment.aggregate([{$sort: { updatedAt: -1}}])
+            .skip(perPage * page - perPage)
+            .limit(perPage)
+            .exec();
+        const count = await experiment.count();
+
+        res.render('index', {locals, 
+            exp,
+            current: page, 
+            pages: Math.ceil(count / perPage)
+        });
+    }catch (error){
+        console.log(error);
+    } 
 };
 
 
@@ -48,11 +67,9 @@ exports.postExperiment = async(req, res) => {
         details: req.body.details
 
     });
-
     try{
-
-        await Experiment.create(newCustomer);
-
+        await Experiment.create(newExperiment);
+        //await req.flash('info', 'New experiment has been added.') //bruh you didn't add the flash message yet.
         res.redirect('/');
     }catch (error){
         console.log(error);

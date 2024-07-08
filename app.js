@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const express = require('express');
 const expressLayout = require('express-ejs-layouts');
+const flash = require('express-flash-message');
+const session = require('express-session');
 const connectDB = require('./server/config/db');
 
 const app = express();  
@@ -15,6 +17,21 @@ app.use(express.json());
 
 //Static Files
 app.use(express.static('public'));
+
+// This flas message is giving me a very hard time --- Take a look into it later 
+
+
+// Express Session
+app.use(
+    session({
+        secret: 'secret',
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+        }
+    })
+);
 
 // Templating Engine 
 app.use(expressLayout);

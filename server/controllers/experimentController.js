@@ -1,3 +1,7 @@
+const Experiment = require('../models/Experiment');
+const mongoose = require('mongoose');
+
+
 /**
  * GET/
  * Homepage
@@ -25,4 +29,34 @@ exports.addExperiment = async(req, res) => {
     }
 
     res.render('experiment/add', locals);
+}
+
+/**
+ * POST /
+ * Create New Experiment
+ */
+
+exports.postExperiment = async(req, res) => {
+
+    console.log(req.body);
+
+    const newExperiment = new Experiment({
+        initials: req.body.initials,
+        expID: req.body.expID,
+        grid: req.body.grid,
+        fileName: req.body.fileName,
+        details: req.body.details
+
+    });
+
+    try{
+
+        await Experiment.create(newCustomer);
+
+        res.redirect('/');
+    }catch (error){
+        console.log(error);
+    }
+    
+    
 }

@@ -7,6 +7,9 @@ const experimentController = require('../controllers/experimentController');
  */
 
 router.get('/', experimentController.homepage);
+
+
 router.get('/add', experimentController.addExperiment);
+router.post('/add', experimentController.postExperiment);
 
 module.exports = router;

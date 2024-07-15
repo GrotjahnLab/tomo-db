@@ -15,17 +15,20 @@ exports.homepage = async (req, res) => {
     }
 
     let perPage = 12;
-    let page = req.query.pge || 1 ;
+    let page = req.query.page || 1 ;
 
 
     try{
-        const exp = await Experiment.aggregate([{$sort: { updatedAt: -1}}])
-            .skip(perPage * page - perPage)
-            .limit(perPage)
-            .exec();
-        const count = await experiment.count();
+        const count = await Experiment.countDocuments();
+        const exp = await Experiment.aggregate([
+            {$sort: {updatedAt: -1 }},
+            {$skip: perPage * (page - 1)},
+            {$limit: perPage}
+        ]).exec();
+        
 
-        res.render('index', {locals, 
+        res.render('index', {
+            locals, 
             exp,
             current: page, 
             pages: Math.ceil(count / perPage)
@@ -56,6 +59,7 @@ exports.addExperiment = async(req, res) => {
  */
 
 exports.postExperiment = async(req, res) => {
+    
 
     console.log(req.body);
 
@@ -74,6 +78,124 @@ exports.postExperiment = async(req, res) => {
     }catch (error){
         console.log(error);
     }
-    
-    
 }
+
+/**
+    * GET /
+    * Experiment Data
+*/
+
+exports.viewExperiment = async (req, res) => {
+    try{
+        const experiment = await Experiment.findOne({_id: req.params._id});
+
+        const locals = {
+            title: "View experimet Data",
+            description: "A dashboard with tomographic expermient data"
+        };
+
+        res.render('experiment/view',{
+            locals,
+            experiment
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+/**
+ * GET/
+ * Edit Customer Data
+ */
+
+exports.editExperiment = async (req, res) => {
+    try{
+        const experiment = await Experiment.findOne({_id: req.params._id});
+
+        const locals = {
+            title: "Edit experimet Data",
+            description: "A dashboard with tomographic expermient data"
+        };
+
+        res.render('experiment/edit',{
+            locals,
+            experiment
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+/**
+ * GET/
+ * Update Customer Data
+ */
+
+exports.editPost = async (req, res) => {
+    
+    try{
+
+        await Experiment.findByIdAndUpdate(req.params._id,{
+            initials: req.body.initials,
+            expID: req.body.expID,
+            grid: req.body.grid,
+            fileName: req.body.fileName,
+            details: req.body.details,
+            updatedAt: Date.now()
+        });
+
+        res.redirect(`/edit/${req.params._id}`);
+        
+
+    } catch (error){
+        console.log(error);
+    }
+    
+};
+
+
+/**
+ * Delete /
+ * Delete Experiment Data
+ */
+
+exports.deleteExperiment = async (req, res) => {
+    try {
+        await Experiment.deleteOne({ _id: req.params._id });
+        res.redirect("/"); // Redirect to the homepage or any other appropriate page after deletion
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Error deleting experiment");
+    }
+};
+
+/**
+ * Search /
+ * Search Experiment Data
+ */
+exports.searchExperiment = async (req, res) => {
+    const locals = {
+        title: "Search experiment Data",
+        description: "A dashboard with tomographic experiment data"
+    };
+
+    try {
+        let searchTerm = req.body.searchTerm;
+        const searchNoSpecialChar = searchTerm.replace(/[^a-zA-Z0-9]/g, "");
+
+        const experiments = await Experiment.find({
+            $or: [
+                { initials: { $regex: new RegExp(searchNoSpecialChar, "i") } },
+                // Add more fields to search if needed
+            ]
+        });
+
+        res.render("search", {
+            experiments, // Pass experiments to the view
+            locals
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Error searching experiments");
+    }
+};

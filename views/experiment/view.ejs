@@ -1,8 +1,79 @@
-<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2"><% experiment.initials %></h1>
-    <div class="btn-toolbar mb-2 mb-md 0">
-        <div class="btn-group me-2">
-            <a href="/add" class = "btn btn-sm btn-outline-secondary"> + New Experiment</a>
+<div class = "d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class = "h2"> <%= experiment.initials %></h1>
+    <div class = "btn-toolbarmb-2 mb-md 0">
+        <div class = "btn-group me-2">
+            <button type = "button" class = "btn btn-sm btn-outline-secondary"> Share</button>
+            <button type = "button" class = "btn btn-sm btn-outline-secondary"> Export</button>
         </div>
     </div>
 </div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class = "col">
+            <nav aria-label = "breadcrumb">
+                <ol class = "breadcrumb">
+                    <li class = "breadcrumb-item"><a href = "/"> Dashboard</a></li>
+                    <li class="breadcrumb-item active"><%= experiment.initials %></li>
+                </ol>
+            </nav>
+        </div>
+        <div class = "col text-end fw-lighter">
+            <b> Last Updated <% new Date(experiment.updatedAt).toUTCString() %> </b>
+            <b>UserId: <b><%= experiment._id %></b>
+        </div>
+    </div>
+</div>
+
+<ul class="list-group">
+
+    <li class="list-group-item"> 
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>Initials:</b></div>
+        <div class="col"><%= experiment.initials %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item"> 
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>ExperimentID:</b></div>
+        <div class="col"><%= experiment.expID %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item"> 
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>Grid:</b></div>
+        <div class="col"><%= experiment.grid %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item"> 
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>File Name:</b></div>
+        <div class="col"><%= experiment.fileName %></div>
+      </div>
+    </li>
+
+    <li class="list-group-item"> 
+        <div class="row">
+          <div class="col" style="max-width: 140px"> <b>Details:</b></div>
+          <div class="col"><%= experiment.details %></div>
+        </div>
+      </li>
+  
+    <li class="list-group-item"> 
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>Date Created:</b></div>
+        <div class="col"><%= experiment.createdAt %></div>
+      </div>
+    </li>
+  
+    <li class="list-group-item"> 
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>Date Modified:</b></div>
+        <div class="col"><%= experiment.updatedAt %></div>
+      </div>
+    </li>
+  
+  </ul>

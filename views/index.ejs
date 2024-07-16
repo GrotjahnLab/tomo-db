@@ -29,7 +29,9 @@
                     <td><%= element.initials  %></td>
                     <td><%= element.expID  %></td>
                     <td><%= element.grid  %></td>
-                    <td><%= element.fileName  %></td>
+                    <td>
+                      <a href = "/details/<%= element._id %>"><%= element.fileName %></a>
+                    </td>
                     <td class = "text-end">
 
                         <div class="d-flex flex-row justify-content-end gap-2">

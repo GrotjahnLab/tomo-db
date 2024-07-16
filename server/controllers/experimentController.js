@@ -199,3 +199,27 @@ exports.searchExperiment = async (req, res) => {
         res.status(500).send("Error searching experiments");
     }
 };
+
+/**
+ * GET /
+ * Detailed Experiment Data
+ */
+
+exports.detailsExperiment = async (req, res) => {
+    try {
+        const experiment = await Experiment.findOne({ _id: req.params._id });
+
+        const locals = {
+            title: "Experiment Details",
+            description: "Detailed information for the selected experiment"
+        };
+
+        res.render('experimentDetails/details', {
+            locals,
+            experiment
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Error fetching experiment details");
+    }
+};

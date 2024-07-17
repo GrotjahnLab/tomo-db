@@ -1,5 +1,7 @@
 const Experiment = require('../models/Experiment');
+
 const mongoose = require('mongoose');
+
 
 
 /**
@@ -216,7 +218,8 @@ exports.detailsExperiment = async (req, res) => {
 
         res.render('experimentDetails/details', {
             locals,
-            experiment
+            experiment,
+            
         });
     } catch (error) {
         console.log(error);

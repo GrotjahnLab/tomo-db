@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Preparation Data</h1>
+
+    <div class="btn-toolbar mb-2 mb-md 0">
+        <div class="btn-group me-2">
+            <button class = "btn btn-sm btn-outline-secondary">?</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="col py-3">
+
+    <div class="row">
+        <div class="col">
+            <nav aria-label = "breadcrumb">
+                <ol class = "breadcrumb">
+                    <li class="breadcrumb-item"><a href = "/">Experiment Details</a></li>
+                    <li class = "breadcrumb-item active">New Data</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>UserID</b>
+        </div>
+        
+    </div>
+</div>
+
+<form action = "/addPrepData" method = "POST">
+
+    <div class="row form-group mb-4">
+        <div class = "col">
+            <label  for="dateFrozen"> Date Frozen</label>
+            <input type="date" class = "form-control" name = "dateFrozen" value = "" placeholder = "Date Frozen" required>
+        </div>
+
+        <div class = "col">
+            <label  for="cell_Genotype"> Cell and Genotype</label>
+            <input type="text" class = "form-control" name = "cell_Genotype" value = "" placeholder = "Cell and Genotype" required>
+        </div>
+
+    <div class="row form-group mb-4">
+        <div class = "col">
+            <label  for="treatment"> Treatment</label>
+            <input type="text" class = "form-control" name = "treatment" value = "" placeholder = "Treatment" required>
+        </div>
+
+        <div class = "col">
+            <label  for="cell"> Cell Used</label>
+            <input type="text" class = "form-control" name = "cell" value = "" placeholder = "Cell Used" required>
+        </div>
+    </div>
+
+    <div class="row form-group mb-4">
+        <div class = "col">
+            <label  for="date_clipped"> Date Clipped</label>
+            <input type="date" class = "form-control" name = "date_clipped" value = "" placeholder = "Date Clipped" required>
+        </div>
+
+        <div class = "col">
+            <label  for="boxPosition"> Grid Box Position</label>
+            <input type="text" class = "form-control" name = "boxPosition" value = "" placeholder = "Box Position" required>
+        </div>
+    </div>
+
+    <div class="form-group mb-4">
+
+        <label for="details"> Details</label>
+        <textarea class="form-control" name = "details" id="details" cols = "30" rows = "12" placeholder = "Notes"></textarea>
+    </div>
+
+    <div class="form-group mb-4">
+        <button type="submit" class = "btn btn-primary"> Add Preparation Details</button>
+    </div>
+   
+
+
+</form>

@@ -17,5 +17,4 @@ router.delete('/edit/:_id', experimentController.deleteExperiment);
 router.post('/search', experimentController.searchExperiment);
 router.get('/details/:_id', experimentController.detailsExperiment);
 
-
 module.exports = router;

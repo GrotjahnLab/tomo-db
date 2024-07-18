@@ -7,6 +7,7 @@ const samplePrepController = require('../controllers/samplePrepController');
  */
 router.get('/', samplePrepController.homepage);
 router.get('/addPrepData', samplePrepController.addPrepData);
+router.post('/addPrepData', samplePrepController.postPrepData);
 
 
 module.exports = router;

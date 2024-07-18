@@ -28,7 +28,13 @@ const SamplePrepSchema = new Schema({
     },
     details: {
         type: String
-    }
+    },
+
+    experimentId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Experiment',
+    required: true
+  }
 });
 
 module.exports = mongoose.model('SamplePrep', SamplePrepSchema);

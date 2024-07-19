@@ -10,7 +10,6 @@ router.get('/', experimentController.homepage);
 router.get('/add', experimentController.addExperiment);
 router.post('/add', experimentController.postExperiment);
 router.get('/view/:_id', experimentController.viewExperiment);
-
 router.get('/edit/:_id', experimentController.editExperiment);
 router.put('/edit/:_id', experimentController.editPost);
 router.delete('/edit/:_id', experimentController.deleteExperiment);

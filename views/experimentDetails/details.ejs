@@ -60,15 +60,16 @@
 
                         <div class="d-flex flex-row justify-content-end gap-2">
 
-                            <a href="/view/<%= element._id %>" type="button" class="btn btn-primary btn-small">
+                            <a href="/prep-data/<%= element._id %>" type="button" class="btn btn-primary btn-small">
                               <i class="bi bi-eye"></i>
                             </a>
 
-                            <a href="/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
+                            <a href="/edit-data/<%= element._id %>" type="button" class="btn btn-warning btn-small">
                               <i class="bi bi-pencil"></i>
                             </a>
 
-                            <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+                            
+                            <form action="/edit-data/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
                                 <input type="hidden" name="experimentId" value="<%= experiment._id %>">
                                 <button type="submit" class="btn btn-danger btn-small">
                                   <i class="bi bi-person-x"></i>
@@ -81,4 +82,104 @@
 
             <% }) %>
         </tbody>
+    </table>
+</div>
 
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Leica</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <a href="/leica/add?experimentId=<%= experiment._id %>" class="btn btn-sm btn-outline-secondary"> + New Leica Data</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Date of Microscopy</th>
+                <th scope="col">Grid Box</th>
+                <th scope="col">File Name</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% esp.forEach(element => { %>
+                <tr class="align-middle">
+                    <td><%= element.dateMicroscopy.toLocaleDateString() %></td>
+                    <td><%= element.gridBox %></td>
+                    <td><%= element.LM_filename %></td>
+                    <td class="text-end">
+                        <div class="d-flex flex-row justify-content-end gap-2">
+                            <a href="/leica/view/<%= element._id %>" class="btn btn-primary btn-small">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="/leica/edit/<%= element._id %>" class="btn btn-warning btn-small">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <form action="/leica/delete/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+                                <input type="hidden" name="experimentId" value="<%= experiment._id %>">
+                                <button type="submit" class="btn btn-danger btn-small">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Milling</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <a href="/milling/add?experimentId=<%= experiment._id %>" class="btn btn-sm btn-outline-secondary"> + New Milling Data</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Date of Milling</th>
+                <th scope="col">Grid Box</th>
+                <th scope="col">SEM Filename</th>
+                <th scope="col">Maps Filename</th>
+                <th scope="col">Lamellae</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% mill.forEach(element => { %>
+                <tr class="align-middle">
+                    <td><%= element.dateMilling.toLocaleDateString() %></td>
+                    <td><%= element.gridBox %></td>
+                    <td><%= element.sem_filename %></td>
+                    <td><%= element.maps_filename %></td>
+                    <td><%= element.lamellae %></td>
+                    <td class="text-end">
+                        <div class="d-flex flex-row justify-content-end gap-2">
+                            <a href="/milling/view/<%= element._id %>" class="btn btn-primary btn-small">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="/milling/edit/<%= element._id %>" class="btn btn-warning btn-small">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <form action="/milling/delete/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+                                <input type="hidden" name="experimentId" value="<%= experiment._id %>">
+                                <button type="submit" class="btn btn-danger btn-small">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

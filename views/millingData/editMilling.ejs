@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Editing: <%= millingData.sem_filename %></h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button class="btn btn-sm btn-outline-secondary">?</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><%= millingData.sem_filename %></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>Milling Data ID:</b> <%= millingData._id %>
+        </div>
+    </div>
+</div>
+
+<form action="/milling/edit-data/<%= millingData._id %>?_method=PUT" method="POST">
+    <div class="row form-group mb-4">
+        <div class="col">
+            <label for="dateMilling">Date of Milling</label>
+            <input type="date" class="form-control" name="dateMilling" value="<%= millingData.dateMilling.toISOString().split('T')[0] %>" required>
+        </div>
+        <div class="col">
+            <label for="gridBox">Grid Box</label>
+            <input type="text" class="form-control" name="gridBox" value="<%= millingData.gridBox %>" placeholder="Grid Box" required>
+        </div>
+    </div>
+    <div class="row form-group mb-4">
+        <div class="col">
+            <label for="sem_filename">SEM Filename</label>
+            <input type="text" class="form-control" name="sem_filename" value="<%= millingData.sem_filename %>" placeholder="SEM Filename" required>
+        </div>
+        <div class="col">
+            <label for="maps_filename">Maps Filename</label>
+            <input type="text" class="form-control" name="maps_filename" value="<%= millingData.maps_filename %>" placeholder="Maps Filename" required>
+        </div>
+    </div>
+    <div class="row form-group mb-4">
+        <div class="col">
+            <label for="lamellae">Number of Lamellae</label>
+            <input type="number" class="form-control" name="lamellae" value="<%= millingData.lamellae %>" placeholder="Number of Lamellae" required>
+        </div>
+    </div>
+    <div class="form-group mb-4">
+        <label for="details">Milling Data Details</label>
+        <textarea class="form-control" name="details" id="details" cols="30" rows="12" placeholder="Milling Data Details"><%= millingData.details %></textarea>
+    </div>
+    <div class="form-group mb-4">
+        <button type="submit" class="btn btn-primary">Update Milling Data</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">Delete Milling Data</button>
+    </div>
+</form>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">You are about to remove a Milling data record</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This will remove the Milling data record<br/>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/milling/delete/<%= millingData._id %>?_method=DELETE" method="POST" class="position-relative">
+                    <button type="submit" class="btn btn-primary">Yes, Remove Milling Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

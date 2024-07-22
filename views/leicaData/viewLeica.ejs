@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2"><%= leicaData.LM_filename %></h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Details</a></li>
+                    <li class="breadcrumb-item active"><%= leicaData.LM_filename %></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>Last Updated:</b> <%= new Date(leicaData.updatedAt).toUTCString() %><br>
+            <b>UserID:</b> <%= leicaData._id %>
+        </div>
+    </div>
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Date of Microscopy:</b></div>
+            <div class="col"><%= leicaData.dateMicroscopy.toDateString() %></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Grid Box:</b></div>
+            <div class="col"><%= leicaData.gridBox %></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>File Name:</b></div>
+            <div class="col"><%= leicaData.LM_filename %></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Details:</b></div>
+            <div class="col"><%= leicaData.details %></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Created At:</b></div>
+            <div class="col"><%= leicaData.createdAt.toDateString() %></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Last Updated:</b></div>
+            <div class="col"><%= leicaData.updatedAt.toDateString() %></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Experiment ID:</b></div>
+            <div class="col"><%= leicaData.experimentId %></div>
+        </div>
+    </li>
+</ul>

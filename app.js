@@ -43,6 +43,8 @@ app.set('view engine', "ejs");
 //Routes
 app.use('/', require('./server/routes/experiment'))
 app.use('/', require('./server/routes/samplePrep'))
+app.use('/', require('./server/routes/leica'))
+app.use('/', require('./server/routes/milling'))
 
 
 

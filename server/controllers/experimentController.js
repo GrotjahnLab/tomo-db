@@ -1,5 +1,7 @@
 const Experiment = require('../models/Experiment');
 const SamplePrep = require('../models/SamplePrep');
+const Leica = require('../models/Leica');
+const Milling = require('../models/Milling')
 const mongoose = require('mongoose');
 
 
@@ -210,25 +212,28 @@ exports.searchExperiment = async (req, res) => {
 
 
 exports.detailsExperiment = async (req, res) => {
-    try {
-      const experiment = await Experiment.findOne({ _id: req.params._id });
-      const samples = await SamplePrep.find({ experimentId: experiment._id });
-  
-      console.log('Experiment:', experiment);
-      console.log('Samples:', samples);
-  
-      const locals = {
-        title: "Experiment Details",
-        description: "Detailed information for the selected experiment"
-      };
-  
-      res.render('experimentDetails/details', {
-        locals,
-        experiment,
-        samples
-      });
-    } catch (error) {
-      console.log(error);
-      res.status(500).send("Error fetching experiment details");
-    }
-  };
+  try {
+    const experiment = await Experiment.findOne({ _id: req.params._id });
+    const samples = await SamplePrep.find({ experimentId: req.params._id });
+    const esp = await Leica.find({ experimentId: req.params._id });
+    const mill = await Milling.find({ experimentId: req.params._id });
+
+    console.log('Samples:', samples); // Add this line
+
+    const locals = {
+      title: "Experiment Details",
+      description: "Detailed information for the selected experiment"
+    };
+
+    res.render('experimentDetails/details', {
+      locals,
+      experiment,
+      samples,
+      esp,
+      mill
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Error fetching experiment details");
+  }
+};

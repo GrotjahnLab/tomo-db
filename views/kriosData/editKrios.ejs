@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Editing: <%= kriosData.kriosFileName %></h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button class="btn btn-sm btn-outline-secondary">?</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><%= kriosData.kriosFileName %></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>Krios Data ID:</b> <%= kriosData._id %>
+        </div>
+    </div>
+</div>
+
+<form action="/krios/edit-data/<%= kriosData._id %>?_method=PUT" method="POST">
+    <div class="row form-group mb-4">
+        <div class="col">
+            <label for="kriosDate">Date of Krios Session</label>
+            <input type="date" class="form-control" name="kriosDate" value="<%= kriosData.kriosDate.toISOString().split('T')[0] %>" required>
+        </div>
+        <div class="col">
+            <label for="kriosFileName">Krios File Name</label>
+            <input type="text" class="form-control" name="kriosFileName" value="<%= kriosData.kriosFileName %>" placeholder="Krios File Name" required>
+        </div>
+    </div>
+    <div class="form-group mb-4">
+        <label for="kriosNotes">Krios Notes</label>
+        <textarea class="form-control" name="kriosNotes" id="kriosNotes" cols="30" rows="12" placeholder="Krios Session Notes"><%= kriosData.kriosNotes %></textarea>
+    </div>
+    <div class="form-group mb-4">
+        <button type="submit" class="btn btn-primary">Update Krios Data</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">Delete Krios Data</button>
+    </div>
+</form>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">You are about to remove a Krios data record</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This will remove the Krios data record<br/>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/krios/delete/<%= kriosData._id %>?_method=DELETE" method="POST" class="position-relative">
+                    <button type="submit" class="btn btn-primary">Yes, Remove Krios Data</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

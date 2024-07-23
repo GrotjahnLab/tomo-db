@@ -1,8 +1,9 @@
 const Experiment = require('../models/Experiment');
 const SamplePrep = require('../models/SamplePrep');
 const Leica = require('../models/Leica');
-const Milling = require('../models/Milling')
+const Milling = require('../models/Milling');
 const mongoose = require('mongoose');
+const Krios = require('../models/Krios');
 
 
 
@@ -145,6 +146,7 @@ exports.editPost = async (req, res) => {
             grid: req.body.grid,
             fileName: req.body.fileName,
             details: req.body.details,
+            status: req.body.status,
             updatedAt: Date.now()
         });
 
@@ -217,6 +219,7 @@ exports.detailsExperiment = async (req, res) => {
     const samples = await SamplePrep.find({ experimentId: req.params._id });
     const esp = await Leica.find({ experimentId: req.params._id });
     const mill = await Milling.find({ experimentId: req.params._id });
+    const krio = await Krios.find({experimentId: req.params._id});
 
     console.log('Samples:', samples); // Add this line
 
@@ -230,7 +233,8 @@ exports.detailsExperiment = async (req, res) => {
       experiment,
       samples,
       esp,
-      mill
+      mill,
+      krio
     });
   } catch (error) {
     console.log(error);

@@ -13,10 +13,12 @@
     <table class = "table table-striped table-sm">
         <thead>
             <tr>
-                <th scope="col"> initials</th>
-                <th scope="col"> expID</th>
-                <th scope="col"> grid</th>
-                <th scope="col"> fileName</th>
+                <th scope="col"> Initials</th>
+                <th scope="col"> ExpID</th>
+                <th scope="col"> Grid</th>
+                <th scope="col"> File Name</th>
+                
+                <th scope="col">Status</th>
                 <th scope="col" class="text-end"> Action</th>
             </tr>
         </thead>
@@ -29,9 +31,17 @@
                     <td><%= element.initials  %></td>
                     <td><%= element.expID  %></td>
                     <td><%= element.grid  %></td>
+                    
+                    
                     <td>
                       <a href = "/details/<%= element._id %>"><%= element.fileName %></a>
                     </td>
+
+                    
+                    <td><%= element.status %></td>
+
+                    
+                    
                     <td class = "text-end">
 
                         <div class="d-flex flex-row justify-content-end gap-2">

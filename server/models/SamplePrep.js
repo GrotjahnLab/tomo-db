@@ -19,8 +19,8 @@ const SamplePrepSchema = new Schema({
         required: true
     },
     date_clipped: {
-        type: Date,
-        required: true
+        type: Date
+        
     },
     boxPosition: {
         type: String,

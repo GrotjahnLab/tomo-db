@@ -73,7 +73,9 @@ exports.postExperiment = async(req, res) => {
         expID: req.body.expID,
         grid: req.body.grid,
         fileName: req.body.fileName,
-        details: req.body.details
+        details: req.body.details,
+        status: req.body.status
+
 
     });
     try{

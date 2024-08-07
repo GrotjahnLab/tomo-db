@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Data Processing Details</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:history.back()">Details</a></li>
+                    <li class="breadcrumb-item active">Data Processing</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>Last Updated:</b> <%= new Date(dataProcessing.updatedAt).toUTCString() %><br>
+            <b>ID:</b> <%= dataProcessing._id %>
+        </div>
+    </div>
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Path to Reconstructions:</b></div>
+            <div class="col"><a href="<%= dataProcessing.pathToReconstructions %>" target="_blank"><%= dataProcessing.pathToReconstructions %></a></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Path to Membrane Segmentation:</b></div>
+            <div class="col"><a href="<%= dataProcessing.pathToMembraneSegmentation %>" target="_blank"><%= dataProcessing.pathToMembraneSegmentation %></a></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Path to Filament Segmentation:</b></div>
+            <div class="col"><a href="<%= dataProcessing.pathToFilamentSegmentation %>" target="_blank"><%= dataProcessing.pathToFilamentSegmentation %></a></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Path to Dragonfly Segmentation:</b></div>
+            <div class="col"><a href="<%= dataProcessing.pathToDragonflySegmentation %>" target="_blank"><%= dataProcessing.pathToDragonflySegmentation %></a></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Path to Particle Picks:</b></div>
+            <div class="col"><a href="<%= dataProcessing.pathToParticlePicks %>" target="_blank"><%= dataProcessing.pathToParticlePicks %></a></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Path to M Refinements:</b></div>
+            <div class="col"><a href="<%= dataProcessing.pathToMRefinements %>" target="_blank"><%= dataProcessing.pathToMRefinements %></a></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Work Link:</b></div>
+            <div class="col"><a href="<%= dataProcessing.workLink %>" target="_blank"><%= dataProcessing.workLink %></a></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Created At:</b></div>
+            <div class="col"><%= dataProcessing.createdAt.toDateString() %></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Last Updated:</b></div>
+            <div class="col"><%= dataProcessing.updatedAt.toDateString() %></div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-4"><b>Experiment ID:</b></div>
+            <div class="col"><%= dataProcessing.experimentId %></div>
+        </div>
+    </li>
+</ul>

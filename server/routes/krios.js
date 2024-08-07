@@ -15,3 +15,4 @@ router.put('/krios/edit-data/:id', kriosController.updateKriosData);
 router.delete('/krios/delete/:_id', kriosController.deleteKriosData);
 
 module.exports = router;
+

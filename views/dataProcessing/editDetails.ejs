@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Editing Data Processing</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button class="btn btn-sm btn-outline-secondary">?</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:history.back()">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Edit Data Processing</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>Data Processing ID:</b> <%= dataProcessing._id %>
+        </div>
+    </div>
+</div>
+
+<form action="/dataProcessing/edit/<%= dataProcessing._id %>?_method=PUT" method="POST">
+    <div class="form-group mb-4">
+        <label for="pathToReconstructions">Path to Reconstructions</label>
+        <input type="text" class="form-control" name="pathToReconstructions" value="<%= dataProcessing.pathToReconstructions %>" placeholder="Path to Reconstructions">
+    </div>
+    <div class="form-group mb-4">
+        <label for="pathToMembraneSegmentation">Path to Membrane Segmentation</label>
+        <input type="text" class="form-control" name="pathToMembraneSegmentation" value="<%= dataProcessing.pathToMembraneSegmentation %>" placeholder="Path to Membrane Segmentation">
+    </div>
+    <div class="form-group mb-4">
+        <label for="pathToFilamentSegmentation">Path to Filament Segmentation</label>
+        <input type="text" class="form-control" name="pathToFilamentSegmentation" value="<%= dataProcessing.pathToFilamentSegmentation %>" placeholder="Path to Filament Segmentation">
+    </div>
+    <div class="form-group mb-4">
+        <label for="pathToDragonflySegmentation">Path to Dragonfly Segmentation</label>
+        <input type="text" class="form-control" name="pathToDragonflySegmentation" value="<%= dataProcessing.pathToDragonflySegmentation %>" placeholder="Path to Dragonfly Segmentation">
+    </div>
+    <div class="form-group mb-4">
+        <label for="pathToParticlePicks">Path to Particle Picks</label>
+        <input type="text" class="form-control" name="pathToParticlePicks" value="<%= dataProcessing.pathToParticlePicks %>" placeholder="Path to Particle Picks">
+    </div>
+    <div class="form-group mb-4">
+        <label for="pathToMRefinements">Path to M Refinements</label>
+        <input type="text" class="form-control" name="pathToMRefinements" value="<%= dataProcessing.pathToMRefinements %>" placeholder="Path to M Refinements">
+    </div>
+    <div class="form-group mb-4">
+        <label for="workLink">Work Link</label>
+        <input type="text" class="form-control" name="workLink" value="<%= dataProcessing.workLink %>" placeholder="Work Link">
+    </div>
+    <div class="form-group mb-4">
+        <button type="submit" class="btn btn-primary">Update Data Processing</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" id="deleteButton" data-bs-target="#deleteModal">Delete Data Processing</button>
+    </div>
+</form>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">You are about to remove a Data Processing record</div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This will remove the Data Processing record<br/>Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action="/dataProcessing/delete/<%= dataProcessing._id %>?_method=DELETE" method="POST" class="position-relative">
+                    <button type="submit" class="btn btn-primary">Yes, Remove Data Processing</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -46,6 +46,7 @@ app.use('/', require('./server/routes/samplePrep'))
 app.use('/', require('./server/routes/leica'))
 app.use('/', require('./server/routes/milling'))
 app.use('/', require('./server/routes/krios'))
+app.use('/', require('./server/routes/dataProcessing'))
 
 
 //Handle 404

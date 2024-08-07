@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Processing Data</h1>
+
+    <div class="btn-toolbar mb-2 mb-md 0">
+        <div class="btn-group me-2">
+            <button class="btn btn-sm btn-outline-secondary">?</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Data Processing Details</a></li>
+                    <li class="breadcrumb-item active">New Data</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>UserID</b>
+        </div>
+    </div>
+</div>
+
+
+<form action="/dataProcessing/add" method="POST">
+    <input type="hidden" name="experimentId" value="<%= experimentId %>">
+
+    <div class="form-group mb-4">
+        <label for="pathToReconstructions">Path to Reconstructions</label>
+        <input type="text" class="form-control" id="pathToReconstructions" name="pathToReconstructions" value="" placeholder="https://example.com/reconstructions">
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="pathToMembraneSegmentation">Path to Membrane Segmentation</label>
+        <input type="text" class="form-control" id="pathToMembraneSegmentation" name="pathToMembraneSegmentation" value="" placeholder="https://example.com/membrane-segmentation">
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="pathToFilamentSegmentation">Path to Filament Segmentation</label>
+        <input type="text" class="form-control" id="pathToFilamentSegmentation" name="pathToFilamentSegmentation" value="" placeholder="https://example.com/filament-segmentation">
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="pathToDragonflySegmentation">Path to Dragonfly Segmentation</label>
+        <input type="text" class="form-control" id="pathToDragonflySegmentation" name="pathToDragonflySegmentation" value="" placeholder="https://example.com/dragonfly-segmentation">
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="pathToParticlePicks">Path to Particle Picks</label>
+        <input type="text" class="form-control" id="pathToParticlePicks" name="pathToParticlePicks" value="" placeholder="https://example.com/particle-picks">
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="pathToMRefinements">Path to M Refinements</label>
+        <input type="text" class="form-control" id="pathToMRefinements" name="pathToMRefinements" value="" placeholder="https://example.com/m-refinements">
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="workLink">Work Link</label>
+        <input type="text" class="form-control" id="workLink" name="workLink" value="" placeholder="https://example.com/work-link">
+    </div>
+
+    <div class="form-group mb-4">
+        <button type="submit" class="btn btn-primary">Add Data Processing Details</button>
+    </div>
+</form>

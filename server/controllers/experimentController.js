@@ -4,6 +4,7 @@ const Leica = require('../models/Leica');
 const Milling = require('../models/Milling');
 const mongoose = require('mongoose');
 const Krios = require('../models/Krios');
+const DataProcessing = require('../models/DataProcessing');
 
 
 
@@ -222,6 +223,7 @@ exports.detailsExperiment = async (req, res) => {
     const esp = await Leica.find({ experimentId: req.params._id });
     const mill = await Milling.find({ experimentId: req.params._id });
     const krio = await Krios.find({experimentId: req.params._id});
+    const dataPro = await DataProcessing.find({experimentId: req.params._id});
 
     console.log('Samples:', samples); // Add this line
 
@@ -236,7 +238,8 @@ exports.detailsExperiment = async (req, res) => {
       samples,
       esp,
       mill,
-      krio
+      krio,
+      dataPro
     });
   } catch (error) {
     console.log(error);

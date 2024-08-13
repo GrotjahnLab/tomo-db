@@ -47,6 +47,7 @@ app.use('/', require('./server/routes/leica'))
 app.use('/', require('./server/routes/milling'))
 app.use('/', require('./server/routes/krios'))
 app.use('/', require('./server/routes/dataProcessing'))
+app.use('/', require('./server/routes/catalog'));
 
 
 //Handle 404

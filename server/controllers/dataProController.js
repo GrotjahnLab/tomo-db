@@ -46,7 +46,7 @@ exports.addDataProcessing = async (req, res) => {
         res.render('experimentDetails/addDataPrep', { locals, experimentId });
     } catch (error) {
         console.error('Error in addDataPrep:', error);
-        res.status(500).json({ message: 'Error loading Krios data form', error: error.message });
+        res.status(500).json({ message: 'Error loading data prep form', error: error.message });
     }
 };
 

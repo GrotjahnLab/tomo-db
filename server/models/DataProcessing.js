@@ -27,7 +27,7 @@ const dataProcessingSchema = new Schema({
     workLink: {
         type: String
     }
-    // You can add more fields here as needed
+
 }, { timestamps: true });
 
 module.exports = mongoose.model('DataProcessing', dataProcessingSchema);

@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Catalog Data</h1>
+
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+            <button class="btn btn-sm btn-outline-secondary">?</button>
+        </div>
+    </div>
+</div>
+
+<div class="col py-3">
+    <div class="row">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Catalog Details</a></li>
+                    <li class="breadcrumb-item active">New Catalog Entry</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col text-end fw-lighter">
+            <b>UserID</b>
+        </div>
+    </div>
+</div>
+
+<form action="/catalog/add" method="POST">
+    <input type="hidden" name="experimentId" value="<%= experimentId %>">
+
+    <div class="form-group mb-4">
+        <label for="tomogramFile">Tomogram File</label>
+        <input type="text" class="form-control" id="tomogramFile" name="tomogramFile" value="" placeholder="Tomogram file name">
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="residualError">Residual Error</label>
+        <input type="text" class="form-control" id="residualError" name="residualError" value="" placeholder="Residual error value">
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="tomogramQuality">Tomogram Quality</label>
+        <select class="form-select" id="tomogramQuality" name="tomogramQuality">
+            <option value="">Select quality</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Poor">Poor</option>
+        </select>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="clemResults">CLEM Results</label>
+        <textarea class="form-control" id="clemResults" name="clemResults" rows="3" placeholder="CLEM results description"></textarea>
+    </div>
+
+    <div class="form-group mb-4">
+        <label>Observed Structures</label>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="mitochondria" name="observedStructures" value="Mitochondria">
+            <label class="form-check-label" for="mitochondria">Mitochondria</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="mitochondriaConstriction" name="observedStructures" value="Mitochondria Constriction">
+            <label class="form-check-label" for="mitochondriaConstriction">Mitochondria Constriction</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="endoplasmicReticulum" name="observedStructures" value="Endoplasmic Reticulum">
+            <label class="form-check-label" for="endoplasmicReticulum">Endoplasmic Reticulum</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="microtubule" name="observedStructures" value="Microtubule">
+            <label class="form-check-label" for="microtubule">Microtubule</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="septin" name="observedStructures" value="Septin">
+            <label class="form-check-label" for="septin">Septin</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="ribosome" name="observedStructures" value="Ribosome">
+            <label class="form-check-label" for="ribosome">Ribosome</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="actin" name="observedStructures" value="Actin">
+            <label class="form-check-label" for="actin">Actin</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="other" name="observedStructures" value="Other">
+            <label class="form-check-label" for="other">Other</label>
+        </div>
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="otherStructures">Other Structures (if applicable)</label>
+        <input type="text" class="form-control" id="otherStructures" name="otherStructures" value="" placeholder="Specify other structures">
+    </div>
+
+    <div class="form-group mb-4">
+        <button type="submit" class="btn btn-primary">Add Catalog Entry</button>
+    </div>
+</form>

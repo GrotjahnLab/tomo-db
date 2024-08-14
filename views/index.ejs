@@ -54,11 +54,11 @@
                               <i class="bi bi-pencil"></i>
                             </a>
 
-                            <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
-                                <button type="submit" class="btn btn-danger btn-small">
-                                  <i class="bi bi-person-x"></i>
-                                </button>
-                            </form>
+                            <a href="#" class="btn btn-danger btn-small" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick="setDeleteFormAction('<%= element._id %>')">
+                              <i class="bi bi-person-x"></i>
+                            </a>
+
+                            
                         </div>
                     </td>
 
@@ -68,6 +68,36 @@
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">You are about to remove an experiment record</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>This will remove the experiment record. Are you sure?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <form id="deleteForm" method="POST" class="position-relative">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-danger">Yes, Remove experiment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function setDeleteFormAction(id) {
+  document.getElementById('deleteForm').action = `/edit/${id}?_method=DELETE`;
+}
+</script>
+
+
+
 
 <% if (exp.length > 0) { %>
     <nav aria-label="Dashboard Pagination">

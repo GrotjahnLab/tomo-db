@@ -4,11 +4,11 @@ const CatalogSchema = new mongoose.Schema({
   experimentId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Experiment',
-    required: true
+    
   },
   tomogramFile: {
     type: String,
-    required: true
+    
   },
   residualError: {
     type: String

@@ -83,7 +83,7 @@ exports.postExperiment = async(req, res) => {
     try{
         await Experiment.create(newExperiment);
         //await req.flash('info', 'New experiment has been added.') //bruh you didn't add the flash message yet.
-        res.redirect('/');
+        
     }catch (error){
         console.log(error);
     }
@@ -114,7 +114,7 @@ exports.viewExperiment = async (req, res) => {
 
 /**
  * GET/
- * Edit Customer Data
+ * Edit Data
  */
 
 exports.editExperiment = async (req, res) => {
@@ -130,6 +130,8 @@ exports.editExperiment = async (req, res) => {
             locals,
             experiment
         });
+
+        
     } catch (error) {
         console.log(error);
     }
@@ -154,7 +156,7 @@ exports.editPost = async (req, res) => {
             updatedAt: Date.now()
         });
 
-        res.redirect(`/edit/${req.params._id}`);
+        res.redirect("/");
         
 
     } catch (error){
@@ -178,6 +180,8 @@ exports.deleteExperiment = async (req, res) => {
         res.status(500).send("Error deleting experiment");
     }
 };
+
+
 
 /**
  * Search /
@@ -228,7 +232,7 @@ exports.detailsExperiment = async (req, res) => {
     const cat = await Catalog.find({experimentId: req.params._id});
 
 
-    console.log('Samples:', samples); // Add this line
+    console.log('Samples:', samples); 
 
     const locals = {
       title: "Experiment Details",

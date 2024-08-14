@@ -11,6 +11,8 @@ router.post('/addPrepData', samplePrepController.postPrepData);
 router.get('/prep-data/:_id', samplePrepController.viewPrepData);
 router.get('/edit-data/:_id', samplePrepController.editPrepData);
 router.put('/edit-data/:_id', samplePrepController.updatePrepData);
-router.delete('/edit-data/delete/:_id', samplePrepController.deletePrepData);
+router.delete('/edit-data/:_id', samplePrepController.deletePrepData);
+
+
 
 module.exports = router;

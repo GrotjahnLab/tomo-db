@@ -321,8 +321,8 @@
                             <a href="/catalogData/view/<%= element._id %>" class="btn btn-primary btn-small">
                                 <i class="bi bi-eye"></i>
                             </a>
-                            <a href="/catalogData/edit/<%= element._id %>" class="btn btn-warning btn-small">
-                                <i class="bi bi-pencil"></i>
+                            <a href="/catalog/edit/<%= element._id %>" class="btn btn-primary btn-sm">
+                                <i class="bi bi-pencil"></i> 
                             </a>
                             <form action="/catalogData/delete/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
                                 <input type="hidden" name="experimentId" value="<%= experiment._id %>">

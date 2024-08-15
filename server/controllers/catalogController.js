@@ -119,8 +119,10 @@ exports.viewCatDetails = async (req, res) => {
  */
 exports.editCatData = async (req, res) => {
     try {
-        const catalogData = await Catalog.findOne({_id: req.params._id});
-        if (!catalogData) {
+        console.log('Editing catalog data with ID:', req.params._id);
+        const element = await Catalog.findOne({_id: req.params._id});
+        if (!element) {
+            console.log('Catalog data not found for ID:', req.params._id);
             return res.status(404).send('Catalog Data not found');
         }
 
@@ -129,9 +131,10 @@ exports.editCatData = async (req, res) => {
             description: "Edit tomographic experiment catalog data"
         };
 
+        console.log('Rendering editCatDetails view with catalog data:', element);
         res.render('catalogData/editCatDetails', {
             locals,
-            catalogData
+            element
         });
     } catch (error) {
         console.error('Error fetching catalog data for edit:', error);
@@ -145,7 +148,18 @@ exports.editCatData = async (req, res) => {
  */
 exports.updateCatData = async (req, res) => {
     try {
-        const updatedCatalogData = await Catalog.findByIdAndUpdate(req.params._id, {
+        console.log('Request params:', req.params);
+        console.log('Request body:', req.body);
+        console.log('Attempting to update catalog data with ID:', req.params._id || req.body._id);
+
+        const idToUpdate = req.params._id || req.body._id;
+
+        if (!idToUpdate) {
+            console.log('No ID provided for update');
+            return res.status(400).send('No ID provided for update');
+        }
+
+        const updatedElement = await Catalog.findByIdAndUpdate(idToUpdate, {
             tomogramFile: req.body.tomogramFile,
             residualError: req.body.residualError,
             tomogramQuality: req.body.tomogramQuality,
@@ -155,11 +169,13 @@ exports.updateCatData = async (req, res) => {
             updatedAt: Date.now()
         }, { new: true, runValidators: true });
 
-        if (!updatedCatalogData) {
+        if (!updatedElement) {
+            console.log('No catalog data found with ID:', idToUpdate);
             return res.status(404).send('Catalog data not found');
         }
 
-        res.redirect(`/catalog/view/${req.params._id}`);
+        console.log('Successfully updated catalog data:', updatedElement);
+        res.redirect(`/catalog/view/${idToUpdate}`);
     } catch (error) {
         console.error('Error updating Catalog data:', error);
         res.status(500).render('error', { message: 'Error updating Catalog data' });

@@ -67,7 +67,7 @@ exports.postMillingData = async (req, res) => {
         const savedMilling = await newMillingData.save();
         console.log('Saved Milling:', savedMilling);
 
-        res.redirect(`/experiment/${req.body.experimentId}`);
+        res.redirect(`/details/${req.body.experimentId}`);
     } catch (error) {
         console.error('Error in postPrepData:', error);
         res.status(500).send(`Error creating Milling data: ${error.message}`);

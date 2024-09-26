@@ -73,7 +73,7 @@ exports.postKriosData = async (req, res) => {
         const savedKrios = await newKriosData.save();
         console.log('Saved Krios:', savedKrios);
 
-        res.redirect(`/experiment/${req.body.experimentId}`);
+        res.redirect(`/details/${req.body.experimentId}`);
     } catch (error) {
         console.error('Error in postPrepData:', error);
         res.status(500).send(`Error creating Krios data: ${error.message}`);
@@ -156,7 +156,7 @@ exports.updateKriosData = async (req, res) => {
             return res.status(404).json({ message: 'Krios data not found' });
         }
 
-        res.redirect(`/krios/view/${updatedKriosData._id}`);
+        res.redirect(`/details/${req.body.experimentId}`);
     } catch (error) {
         console.error('Error updating Krios data:', error);
         res.status(500).json({ message: 'Error updating Krios data', error: error.message });
@@ -175,7 +175,7 @@ exports.deleteKriosData = async (req, res) => {
             return res.status(404).send("Krios data not found");
         }
         
-        res.redirect(`/experiment/${result.experimentId}`);
+        res.redirect(`/details/${req.body.experimentId}`);
     } catch (error) {
         console.error('Error deleting Krios data:', error);
         res.status(500).send("Error deleting Krios data");

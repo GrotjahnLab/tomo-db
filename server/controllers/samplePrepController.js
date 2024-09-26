@@ -39,6 +39,7 @@ exports.addPrepData = async (req, res) => {
     const experimentId = req.query.experimentId;
 
     res.render('experimentDetails/addPrepData', { locals, experimentId });
+    
 };
 
 /**
@@ -67,7 +68,7 @@ exports.postPrepData = async (req, res) => {
         const savedSamplePrep = await newSamplePrep.save();
         console.log('Saved SamplePrep:', savedSamplePrep);
 
-        res.redirect(`/experiment/${req.body.experimentId}`);
+        res.redirect(`/details/${req.body.experimentId}`);
     } catch (error) {
         console.error('Error in postPrepData:', error);
         res.status(500).send(`Error creating sample preparation data: ${error.message}`);

@@ -5,7 +5,7 @@ const connectDB = async () => {
     try {
         const mongodbUser = 'kapa4902';
         const mongodbCluster = 'cluster0.ey5a5ua.mongodb.net';
-       // Replace with your actual database name
+     
         const mongodbPassword = process.env.MONGODB_PASSWORD;
 
         const uri = `mongodb+srv://${mongodbUser}:${mongodbPassword}@${mongodbCluster}/`;

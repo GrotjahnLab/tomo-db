@@ -76,7 +76,7 @@ exports.postCatData = async (req, res) => {
         const savedCatalog = await newCatalogData.save();
         console.log('Saved Catalog Data:', savedCatalog);
 
-        res.redirect(`/experiment/${req.body.experimentId}`);
+        res.redirect(`/details/${req.body.experimentId}`);
     } catch (error) {
         console.error('Error in postCatalogData:', error);
         res.status(500).send(`Error creating Catalog data: ${error.message}`);

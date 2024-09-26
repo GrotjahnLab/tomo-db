@@ -60,7 +60,7 @@ exports.postLeicaData = async (req, res) => {
 
         const savedData = await newLeicaData.save();
         console.log('Saved Leica data:', savedData);
-        res.redirect(`/experiment/${req.body.experimentId}`);
+        res.redirect(`/details/${req.body.experimentId}`);
     } catch (error) {
         console.error('Error saving Leica data:', error);
         res.status(500).render('error', { message: 'Error saving Leica data', error: error.message });
